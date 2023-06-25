@@ -1,0 +1,45 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func findPatternIndices(str, pattern string) []int {
+	indices := []int{}
+
+	// Procura todas as ocorrências do padrão na string
+	for i := 0; i < len(str); i++ {
+		index := strings.Index(str[i:], pattern)
+		if index == -1 {
+			break
+		}
+		indices = append(indices, i+index)
+		i += index + len(pattern) - 1
+	}
+
+	return indices
+}
+
+func main() {
+	var str, pattern string
+
+	// Solicita a string e o padrão ao usuário
+	fmt.Print("Digite uma string: ")
+	fmt.Scanln(&str)
+	fmt.Print("Digite um padrão: ")
+	fmt.Scanln(&pattern)
+
+	// Encontra os índices em que o padrão ocorre na string
+	indices := findPatternIndices(str, pattern)
+
+	// Exibe o resultado para o usuário
+	if len(indices) > 0 {
+		fmt.Printf("O padrão '%s' ocorre nos seguintes índices da string '%s':\n", pattern, str)
+		for _, index := range indices {
+			fmt.Println(index)
+		}
+	} else {
+		fmt.Printf("O padrão '%s' não foi encontrado na string '%s'.\n", pattern, str)
+	}
+}
