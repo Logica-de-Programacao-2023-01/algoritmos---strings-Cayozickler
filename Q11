@@ -1,0 +1,33 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func removeVowels(str string) string {
+	vowels := "aeiouAEIOU"
+	result := ""
+
+	for _, char := range str {
+		if !strings.ContainsRune(vowels, char) {
+			result += string(char)
+		}
+	}
+
+	return result
+}
+
+func main() {
+	var str string
+
+	// Recebe a string do usuário
+	fmt.Print("Digite uma string: ")
+	fmt.Scanln(&str)
+
+	// Remove as vogais da string
+	result := removeVowels(str)
+
+	// Informa o resultado ao usuário
+	fmt.Println("Resultado:", result)
+}
