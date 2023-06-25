@@ -1,0 +1,29 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func reverseString(str string) string {
+	runes := []rune(str)
+	length := len(runes)
+	for i, j := 0, length-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
+}
+
+func main() {
+	var str string
+
+	// Recebe a string do usuário
+	fmt.Print("Digite uma string: ")
+	fmt.Scanln(&str)
+
+	// Inverte a ordem dos caracteres da string
+	reversedStr := reverseString(str)
+
+	// Informa o resultado ao usuário
+	fmt.Println("Resultado:", reversedStr)
+}
