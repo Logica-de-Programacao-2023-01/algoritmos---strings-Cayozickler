@@ -1,0 +1,30 @@
+package main
+
+import (
+	"fmt"
+	"unicode"
+)
+
+func containsNumber(str string) bool {
+	for _, char := range str {
+		if unicode.IsDigit(char) {
+			return true
+		}
+	}
+	return false
+}
+
+func main() {
+	var str string
+
+	// Solicita a string ao usuário
+	fmt.Print("Digite uma string: ")
+	fmt.Scanln(&str)
+
+	// Verifica se a string contém pelo menos um número
+	if containsNumber(str) {
+		fmt.Println("A string contém pelo menos um número.")
+	} else {
+		fmt.Println("A string não contém números.")
+	}
+}
