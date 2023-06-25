@@ -1,0 +1,40 @@
+package main
+
+import (
+	"fmt"
+)
+
+func getUniqueLetters(str string) string {
+	letterCount := make(map[rune]int)
+	uniqueLetters := ""
+
+	// Conta a ocorrência de cada letra na string
+	for _, char := range str {
+		letterCount[char]++
+	}
+
+	// Verifica quais letras aparecem apenas uma vez
+	for _, char := range str {
+		if letterCount[char] == 1 {
+			uniqueLetters += string(char)
+		}
+	}
+
+	return uniqueLetters
+}
+
+func main() {
+	var str string
+
+	// Solicita a string ao usuário
+	fmt.Print("Digite uma string: ")
+	fmt.Scanln(&str)
+
+	// Obtém as letras únicas da string
+	result := getUniqueLetters(str)
+
+	// Exibe as letras únicas para o usuário
+	fmt.Println("Letras únicas:", result)
+}
+
+
