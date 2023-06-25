@@ -1,0 +1,48 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func isNumericSequence(str string) bool {
+	length := len(str)
+	if length < 2 {
+		return false
+	}
+
+	previous, err := strconv.Atoi(string(str[0]))
+	if err != nil {
+		return false
+	}
+
+	for i := 1; i < length; i++ {
+		current, err := strconv.Atoi(string(str[i]))
+		if err != nil {
+			return false
+		}
+
+		if current != previous-1 {
+			return false
+		}
+
+		previous = current
+	}
+
+	return true
+}
+
+func main() {
+	var str string
+
+	// Solicita a string ao usuário
+	fmt.Print("Digite uma string: ")
+	fmt.Scanln(&str)
+
+	// Verifica se a string é uma sequência numérica decrescente
+	if isNumericSequence(str) {
+		fmt.Println("A string é uma sequência numérica decrescente.")
+	} else {
+		fmt.Println("A string não é uma sequência numérica decrescente.")
+	}
+}
